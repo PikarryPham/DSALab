@@ -21,6 +21,5 @@ struct List {
 };
 
 Examinee readExamineeInfo(string line_info);
-
 vector<Examinee> readExamineeList(string file);
 void writeSumOfScore(List l, string file);

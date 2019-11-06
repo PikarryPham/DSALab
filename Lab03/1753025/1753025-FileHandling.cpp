@@ -1,114 +1,39 @@
 #include "1753025-Function.h"
 
+//BD1200001,,4.0,5.0,,,,4.25,7.0,7.75,,,2.0,N1,BinhDinh
 Examinee readExamineeInfo(string line_info) {
 	Examinee t;
-	int count = 2;
+	
+	vector<string> list_str;
+	string temp = "";
 
-	ifstream fin;
-	fin.open("data.txt", ios_base::in);
-
-	if (fin.fail()) {
-		cout << "File doest exist!" << endl;
-		return t;
-	}
-	else {
-		string temp;
-		string::size_type sz;
-
-		//get the first line
-		string str;
-		getline(fin, str);
-
-		while (!fin.eof()) {
-			//cout << "Reading";
-			
-			
-				getline(fin, t.id, ',');
-				getline(fin, temp, ',');
-
-				getline(fin, temp, ',');
-				if (temp == "")
-					t.math = 0;
-				else
-					t.math = std::stof(temp, &sz);
-
-				getline(fin, temp, ',');
-				if (temp == "")
-					t.literature = 0;
-				else
-					t.literature = std::stof(temp, &sz);
-
-				getline(fin, temp, ',');
-				if (temp == "")
-					t.physic = 0;
-				else
-					t.physic = std::stof(temp, &sz);
-
-				getline(fin, temp, ',');
-				if (temp == "")
-					t.chemistry = 0;
-				else
-					t.chemistry = std::stof(temp, &sz);
-
-				getline(fin, temp, ',');
-				if (temp == "")
-					t.biology = 0;
-				else
-					t.biology = std::stof(temp, &sz);
-
-				getline(fin, temp, ',');
-				if (temp == "")
-					t.history = 0;
-				else
-					t.history = std::stof(temp, &sz);
-
-				getline(fin, temp, ',');
-				if (temp == "")
-					t.geography = 0;
-				else
-					t.geography = std::stof(temp, &sz);
-
-				getline(fin, temp, ',');
-				if (temp == "")
-					t.civic_education = 0;
-				else
-					t.civic_education = std::stof(temp, &sz);
-
-				getline(fin, temp, ',');
-				if (temp == "")
-					t.natural_science = 0;
-				else
-					t.natural_science = std::stof(temp, &sz);
-
-				getline(fin, temp, ',');
-				if (temp == "")
-					t.social_science = 0;
-				else
-					t.social_science = std::stof(temp, &sz);
-
-				getline(fin, temp, ',');
-				if (temp == "")
-					t.foreign_language = 0;
-				else
-					t.foreign_language = std::stof(temp, &sz);
-
-				getline(fin, temp, ',');
-
-				getline(fin, temp, '\n');
-
-				if (line_info == to_string(count)) {
-					break;
-				}
-				else
-					count += 1;
-				
+	for (int i = 0; i < line_info.length(); i++) {
+		if (line_info[i] == ',') {
+			list_str.push_back(temp);
+			temp = "";
 		}
-		fin.close();
+		else {
+			temp += line_info[i];
+		}
 	}
+
+	t.id = list_str[0];
+
+	t.math       = atof(list_str[2].c_str());
+	t.literature = atof(list_str[3].c_str());
+	t.physic     = atof(list_str[4].c_str());
+	t.chemistry  = atof(list_str[5].c_str());
+	t.biology    = atof(list_str[6].c_str());
+	t.history    = atof(list_str[7].c_str());
+	t.geography  = atof(list_str[8].c_str());
+	t.civic_education  = atof(list_str[9].c_str());
+	t.natural_science = t.physic + t.chemistry + t.biology;
+	t.social_science  = t.history + t.geography + t.civic_education;
+	t.foreign_language= atof(list_str[12].c_str());
 
 	return t;
-}
-
+}	
+	
 vector<Examinee> readExamineeList(string file) {
 	vector<Examinee> tempV;
 
@@ -129,79 +54,11 @@ vector<Examinee> readExamineeList(string file) {
 		getline(fin, str);
 
 		while (!fin.eof()) {
-			//cout << "Reading";
-			getline(fin, t.id, ',');
-			getline(fin, temp, ',');
 			
-			getline(fin, temp, ',');
-			if (temp == "")
-				t.math = 0;
-			else
-				t.math = std::stof(temp, &sz);
-
-			getline(fin, temp, ',');
-			if (temp == "")
-				t.literature = 0;
-			else
-				t.literature = std::stof(temp, &sz);
-
-			getline(fin, temp, ',');
-			if (temp == "")
-				t.physic = 0;
-			else
-				t.physic = std::stof(temp, &sz);
-
-			getline(fin, temp, ',');
-			if (temp == "")
-				t.chemistry = 0;
-			else
-				t.chemistry = std::stof(temp, &sz);
-
-			getline(fin, temp, ',');
-			if (temp == "")
-				t.biology = 0;
-			else
-				t.biology = std::stof(temp, &sz);
-
-			getline(fin, temp, ',');
-			if (temp == "")
-				t.history = 0;
-			else
-				t.history = std::stof(temp, &sz);
-
-			getline(fin, temp, ',');
-			if (temp == "")
-				t.geography = 0;
-			else
-				t.geography = std::stof(temp, &sz);
-
-			getline(fin, temp, ',');
-			if (temp == "")
-				t.civic_education = 0;
-			else
-				t.civic_education = std::stof(temp, &sz);
-
-			getline(fin, temp, ',');
-			if (temp == "")
-				t.natural_science = 0;
-			else
-				t.natural_science = std::stof(temp, &sz);
-
-			getline(fin, temp, ',');
-			if (temp == "")
-				t.social_science = 0;
-			else
-				t.social_science = std::stof(temp, &sz);
-
-			getline(fin, temp, ',');
-			if (temp == "")
-				t.foreign_language = 0;
-			else
-				t.foreign_language = std::stof(temp, &sz);
-
-			getline(fin, temp, ',');
-
-			getline(fin, temp, '\n');
+			getline(fin, str);
+			
+			t = readExamineeInfo(str);
+			cout << t.id << endl;
 
 			tempV.push_back(t);
 		}
@@ -221,9 +78,9 @@ void writeSumOfScore(List l, string file) {
 	for (int i = 0; i < l.CLC.size(); i++) {
 		fout << l.CLC[i].id << " ";
 
-		l.CLC[i].natural_science =  l.CLC[i].physic + l.CLC[i].chemistry + l.CLC[i].biology;
+		//l.CLC[i].natural_science =  l.CLC[i].physic + l.CLC[i].chemistry + l.CLC[i].biology;
 
-		l.CLC[i].social_science = l.CLC[i].history + l.CLC[i].geography + l.CLC[i].civic_education;
+		//l.CLC[i].social_science = l.CLC[i].history + l.CLC[i].geography + l.CLC[i].civic_education;
 		
 		float sum = l.CLC[i].math + l.CLC[i].literature + l.CLC[i].natural_science +
 					l.CLC[i].social_science + l.CLC[i].foreign_language;
