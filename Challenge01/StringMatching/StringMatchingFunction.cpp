@@ -94,6 +94,8 @@ Result Table::searchingAlgorithms(string s) {
 			} 
 			else if (left > 0) {
 				left = 0;
+				if (words[i][j] == test[left])
+					left++;
 			}
 			if (left == size_s) {
 				//cout << "left & j: " << left<< " " << j << endl;
@@ -115,6 +117,8 @@ Result Table::searchingAlgorithms(string s) {
 			}
 			else if (ver_left > 0) {
 				ver_left = 0;
+				if (words[i][j] == test[ver_left])
+					ver_left++;
 			}
 
 			if (ver_left == size_s) {
