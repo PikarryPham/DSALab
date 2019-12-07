@@ -1,9 +1,9 @@
 #pragma once
 
 #include <iostream>
-#include <ctime>;
-#include <cmath>;
-#include <Windows.h>
+#include <ctime>
+#include <cmath>
+#include <string>
 
 using namespace std;
 

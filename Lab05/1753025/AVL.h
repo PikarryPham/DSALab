@@ -1,9 +1,11 @@
 #pragma once
 
 #include <iostream>
-#include <ctime>;
-#include <cmath>;
+#include <ctime>
+#include <cmath>
 #include <queue>
+#include <string>
+
 using namespace std;
 
 struct NODE {
@@ -39,4 +41,8 @@ public:
 	void RightRotation(NODE* &p_root);
 	NODE* getMinNode(NODE* p_root);
 	int getHeight(NODE* p_root);
+
+	//Option Menu
+	void Menu();
+	void Option01();
 };

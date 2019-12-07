@@ -1,3 +1,11 @@
+/*
+	Binary Search Tree Header 
+	AVL Tree Header here
+	If you want to use, uncomment one.
+	Because I use the same name of Struct so we cannot use 2 header file 
+	in the same time.
+*/
+
 //#include "BinarySearchTree.h"
 #include "AVL.h"
 
@@ -5,55 +13,45 @@ int main() {
 
 	/*BST b;
 	while (true) {
-		b.Menu();	
+		b.Menu();
+		string ans;
+		cout << endl << "Continue ? (yes/no) -> ";
+		cin >> ans;
+
+		if (ans == "Y" || ans == "y" || ans == "yes" || ans == "Yes" ||
+			ans == "yEs" || ans == "yES" || ans == "YES" || ans == "YeS")
+		{
+			continue;
+		}
+		else break;
 	}*/
-	
+
 	AVL a;
-	
-	/*srand((unsigned int)time(0));
-	for (int i = 0; i < 15; i++) {
-		int check = rand() % 15;
-		cout << check << " ";
-		a.Insert(a.root, check);
-	}*/
-	a.Insert(a.root, 8);
-	a.Insert(a.root, 0);
-	a.Insert(a.root, 0);
-	a.Insert(a.root, 12);
-	a.Insert(a.root, 12);
-	a.Insert(a.root, 9);
-	a.Insert(a.root, 14);
-	a.Insert(a.root, 1);
-	a.Insert(a.root, 5);
-	a.Insert(a.root, 12);
-	a.Insert(a.root, 7);
-	a.Insert(a.root, 4);
-	a.Insert(a.root, 5);
-	a.Insert(a.root, 4);
-	a.Insert(a.root, 13);
+	while (true) {
+		a.Menu();
 
-	cout << endl << "LNR   : ";
-	a.LNR(a.root);
-	//cout << endl;
-	cout << endl << "Height: ";
-	a.LNRHeight(a.root);
+		string ans;
+		cout << endl << "Continue ? (yes/no) -> ";
+		cin >> ans;
 
-	cout << "\n After Remove Node \n";
-	a.Remove(a.root, 14);
-	cout << endl << "LNR   : ";
-	a.LNR(a.root);
-	//cout << endl;
-	cout << endl << "Height: ";
-	a.LNRHeight(a.root);
+		if (ans == "Y" || ans == "y" || ans == "yes" || ans == "Yes" ||
+			ans == "yEs" || ans == "yES" || ans == "YES" || ans == "YeS")
+		{
+			continue;
+		}
+		else break;
+	}
 
-	cout << "\n LevelOrder: ";
-	a.LevelOrder(a.root);
 
-	bool check = a.IsAVL(a.root);
-	if (check)
-		cout << "\n IS AVL \n";
-	else
-		cout << "\n NOT AVL\n";
+	/*
+		CHECK isBinaryTree and isAVL
+
+		NEED: a Tree to test.
+	*/
+
+	//bool avl = a.IsAVL(a.root);
+	//bool bst = b.isBST(b.root);
+
 	system("pause");
 	return 0;
 }

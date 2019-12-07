@@ -255,3 +255,111 @@ int AVL::getHeight(NODE* p_root) {
 
 	return 1 + Max(getHeight(p_root->left), getHeight(p_root->right));
 }
+
+
+//Option Menu
+void AVL::Menu() {
+	int num;
+	cout << endl << "----AVL Tree----\n" << endl;
+
+	cout << "1. Create Binary Search Tree" << endl;
+	cout << "2. Pre-Order Traversal" << endl;
+	cout << "3. InOrder Traversal" << endl;
+	cout << "4. Post-Order Traversal" << endl;
+	cout << "5. Level Order Traversal" << endl;
+	cout << "6. Insert One Node" << endl;
+	cout << "7. Remove One Node" << endl;
+	cout << "0. Exit" << endl;
+	cout << endl << "Your choice: "; cin >> num;
+
+	switch (num) {
+	case 0: exit(1);
+	case 1: {
+		this->Option01();
+		break;
+	}
+	case 2: {
+		cout << "Pre-Order Traversal: ";
+		this->NLR(this->root);
+		cout << endl;
+		break;
+	}
+	case 3: {
+		cout << "In-Order Traversal: ";
+		this->LNR(this->root);
+		cout << endl;
+		break;
+	}
+	case 4: {
+		cout << "Post-Order Traversal: ";
+		this->LRN(this->root);
+		cout << endl;
+		break;
+	}
+	case 5: {
+		cout << "Level Order Traversal: ";
+		this->LevelOrder(this->root);
+		cout << endl;
+		break;
+	}
+	case 6: {
+		int x;
+		cout << "Insert: "; cin >> x;
+		this->Insert(this->root, x);
+		break;
+	}
+
+	case 7: {
+		int x;
+		cout << "Remove: "; cin >> x;
+		this->Remove(this->root, x);
+		break;
+	}
+	
+	
+	default: break;
+	}
+}
+
+void AVL::Option01() {
+	int choice;
+	this->root;
+
+	cout << "You have 2 ways to create BST" << endl;
+	cout << "1. Generate Automatically" << endl;
+	cout << "2. Generate Manually" << endl;
+
+	cout << endl << "Your choice: "; cin >> choice;
+
+	switch (choice) {
+	case 1: {
+		unsigned int n;
+		cout << endl << "Random size: "; cin >> n;
+		srand((unsigned int)time(0));
+
+		cout << endl << "List of Numbers: ";
+		for (int i = 0; i < n; i++) {
+			int check = rand() % n;
+			cout << check << " ";
+			this->Insert(this->root, check);
+		}
+		break;
+	}
+
+	case 2: {
+
+		int n;
+
+		cout << endl << "Type a negative number if you want to exit" << endl;
+		do {
+			cout << "Insert: "; cin >> n;
+			if (n < 0) break;
+			else
+				this->Insert(this->root, n);
+		} while (true);
+		break;
+	}
+
+	default: break;
+	}
+}
