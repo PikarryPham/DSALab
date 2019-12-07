@@ -55,7 +55,6 @@ void BST::printLevelOrder(NODE* root, int height) {
 		printLevelOrder(root->right, height - 1);
 	}
 }
-
 NODE* BST::Search(NODE* root, int x){
 	if (root == NULL || root->key == x) 
 		return root;
@@ -283,6 +282,7 @@ void BST::Menu() {
 	case 0: exit(1);
 	case 1: {
 		this->Option01();
+		this->viewBST(this->root);
 		break;
 	}
 	case 2: {
