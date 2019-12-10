@@ -10,8 +10,8 @@ int main() {
 			2: REVERSE DATA
 			3: NEARLY SORTED DATA
 	*/
-
-	sortingMenu();
+	SortingAlgorithm sa;
+	sa.sortingMenu();
 
 	system("pause");
 	return 0;
